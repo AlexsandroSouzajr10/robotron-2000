@@ -1,0 +1,426 @@
+:root {
+    --main-cinza: #CCCCCC;
+    --main-branco: #FFFFFF;
+    --main-preto: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url(/assets/img/fundo.jpg) no-repeat center/cover;
+    min-height: 100vh;
+    font-weight: 300;
+}
+
+body, input {
+    font-family: 'Teko', sans-serif;
+}
+
+main {
+    width: 80vw;
+    height: 80vh;
+    margin: 10vh 8vw 10vh 12vw;
+    display: flex;
+    gap: 1vw;
+}
+
+.robotron {
+    background: url(/assets/img/estrutura.png) no-repeat center;
+    margin: 0;
+    flex-basis: 40%;
+    position: relative;
+}
+
+.robo {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    object-fit: cover;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 75em;
+}
+
+.botoes{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    display: flex;
+    gap: 1rem;
+    z-index: 1;
+}
+
+.alterar{
+    cursor: pointer;
+    margin: 2px;
+    width: 70px;
+    height: 50px;
+    transition: 300ms;
+}
+
+.alterar img{
+    width: 60px;
+    height: 60px;
+}
+
+.alterar:where(:hover, :focus, .active){
+    scale: 1.5;
+}
+
+.titulo {
+    transform: rotate(180deg);
+    font-weight: 500;
+    font-size: 130px;
+    position: absolute;
+    bottom: 6rem;
+    left: -3rem;
+    line-height: 0.8;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: rgba(255,255,255,0.8)
+}
+
+.box {
+    background: rgba(0,0,0,0.6);
+    clip-path: polygon(calc(100% - 30px) 0, 100% 30px, 100% calc(100% - 30px), calc(100% - 30px) 100%, 30px 100%, 0 calc(100% - 30px), 0 30px, 30px 0);
+    border-left: 5px solid var(--main-cinza);
+    height: auto;
+}
+
+/****************************** Equipamentos *****/
+
+.equipamentos {
+    flex-basis: 32%;
+}
+
+.montador {
+    height: 100%;;
+}
+
+.montador-conteudo {
+    padding: 2em 10%;
+}
+
+.peca {
+    padding: 1em 0;
+}
+
+.peca-titulo {
+    color: var(--main-branco);
+    text-transform: uppercase;
+    font-size: 2.5em;
+}
+
+.controle {
+    background: var(--main-preto);
+    border-radius: 25px;
+    float: right;
+    display: inline-flex;
+    padding: 5px;
+    align-items: center;
+    align-self: flex-end;
+}
+
+.controle-contador {
+    width: 40px;
+    height: 35px;
+    background: none;
+    border: 0;
+    margin: 0 1rem;
+    color: var(--main-branco);
+    text-align: center;
+    font-size: 2.5em;
+    display: inline-flex;
+    align-items: center;
+    padding-top: 8px;
+}
+
+.controle-ajuste {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 44px;
+    border-radius: 50%;
+    color: var(--main-cinza);
+    font-size: 4em;
+    background: var(--main-preto);
+    text-align: center;
+    border: 3px solid var(--main-cinza);
+    cursor: pointer;
+}
+
+.linha {
+    border-color: var(--main-cinza);
+}
+
+.producao {
+    margin-top: 1em;
+    font-size: 2em;
+    text-transform: uppercase;
+    padding: 0.2em 1em;
+    float: right;
+    border: 3px solid var(--main-branco);
+    background: var(--main-branco);
+    clip-path: polygon(100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 0);
+    cursor: pointer;
+}
+
+.producao:hover {
+    background: var(--main-preto);
+    color: var(--main-branco)
+}
+
+
+
+/****************************** Estatísticas *****/
+.estatisticas {
+    flex-basis: 23%;
+    padding: 2em 2em 0;
+}
+
+.estatistica {
+    color: var(--main-branco);
+    display: flex;
+    align-items: flex-start;
+    height: 25%;
+}
+
+.estatistica-titulo {
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--main-cinza);
+    flex-basis: 40%;
+    text-transform: uppercase;
+    order: 1
+}
+
+.estatistica-valor {
+    flex-basis: 60%;
+    position: relative;
+    margin: 10px 0 0;
+    order: 2;
+    margin: -10px 0 0;
+}
+
+.estatistica-valor::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+    border: 1px solid var(--main-cinza);
+    border-radius: 50%;
+}
+
+.estatistica-numero {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-46%);
+    width: 100%;
+    line-height: 100%;
+    text-align: center;
+    font-size: 3em;
+    margin: 0;
+}
+
+.estatistica:nth-child(2n) .estatistica-titulo {
+    order: 2;
+    text-align: right;
+}
+
+.estatistica:nth-child(2n) .estatistica-valor {
+    order: 1;
+    flex-basis: 35%;
+    margin: 10px 0 0;
+}
+
+@media screen and (max-width: 1600px) {
+    body { 
+        font-size: 14px;
+    }
+    
+    main {
+        width: 90vw;
+        height: 80vh;
+        margin: 5vh auto;
+    }
+}
+
+@media screen and (max-width: 1400px){
+    .robotron .robo{
+        height: 90%;
+    }
+
+    .titulo{
+        bottom: 4rem;
+    }
+}
+
+@media screen and (max-width: 1220px){
+    .titulo{
+        transform: rotate(0);
+        writing-mode: horizontal-tb;
+        top: 0;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    body { 
+        font-size: 13px;
+    }
+
+    main {
+        margin: 10vh auto;
+    }
+}
+
+@media screen and (max-width: 1175px){
+    main{
+        flex-direction: column;
+        height: 100%;
+        margin: 10rem auto;
+        padding: 1rem;
+    }
+    .robotron .robo{
+        position: relative;
+        transform: translate(-50%, 5%);
+        width: 70%;
+    }
+
+    .botoes{
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -120px);
+    }
+
+    .alterar img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .titulo{
+        transform: rotate(180deg);
+        writing-mode: vertical-rl;
+    }
+
+    .estatisticas{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.25rem;
+        padding: 1rem;
+    }
+
+    .estatisticas .estatistica{
+       display: flex;
+       align-items: flex-end;
+       gap: 1rem;
+       padding: 0 25px;
+    }
+
+    .estatistica:nth-child(2n) .estatistica-titulo{
+        order: 1;
+    }
+    
+    .estatistica-valor{
+        order: 1;
+    }
+    
+    .estatistica-numero{
+        position: relative;
+        top: 0;
+        font-size: 2.35rem;
+        transform: translateY(0);
+    }
+
+    .estatistica-valor::after{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .robotron .robo{
+        width: 100%;
+    }
+
+    .titulo{
+        display: none;
+    }
+
+    .estatisticas .estatistica{
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .estatisticas .estatistica-valor{
+        margin: 0;
+    }
+
+    .estatistica:nth-child(2n) .estatistica-valor {
+        margin: 0;
+    }
+    
+    .estatistica-numero{
+        transform: translateY(-15%);
+    }
+}
+
+@media screen and (max-width: 600px){
+    .robotron{
+        background: transparent;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .botoes{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        place-items: center;
+        gap: 2rem;
+        bottom: 290px;
+        transform: translate(-50%, -160px);
+        width: 100%;
+    }
+
+    .alterar{
+        width: max-content;
+        margin: 0;
+    }
+
+    .alterar img{
+        width: 60px;
+        height: 60px;
+    }
+
+    .estatisticas{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 412px){
+    .equipamentos {
+        flex-basis: 42%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .montador-conteudo{
+        padding: 2rem 20%;
+    }
+
+    .controle{
+        float: none;
+    }
+
+    .linha{
+        display: block;
+    }
+
+}
